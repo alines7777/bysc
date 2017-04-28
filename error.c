@@ -1,8 +1,9 @@
-/************************************************
-  *	BYte Sequence Composer			*
-  *	error.c					*
-  *	Dr. Cutie - CENU <cenu00@yandex.com>	*
-  ************************************************/
+/****************************************
+  *	cenu <cenu00@yahoo.com>		*
+  *	error.c				*
+  *	BYSC Error Source		*
+  *	BYte Sequence Composer		*
+  ****************************************/
 
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 

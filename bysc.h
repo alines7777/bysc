@@ -1,8 +1,9 @@
-/************************************************
-  *	BYte Sequence Composer			*
-  *	bysc.h					*
-  *	Dr. Cutie - CENU <cenu00@yandex.com>	*
-  ************************************************/
+/****************************************
+  *	cenu <cenu00@yahoo.com>		*
+  *	bysc.h				*
+  *	BYSC Header			*
+  *	BYte Sequence Composer		*
+  ****************************************/
 
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 

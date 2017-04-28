@@ -1,8 +1,9 @@
-/************************************************
-  *	BYte Sequence Composer			*
-  *	main.c					*
-  *	Dr. Cutie - CENU <cenu00@gmail.com>	*
-  ************************************************/
+/****************************************
+  *	cenu <cenu00@yahoo.com>		*
+  *	main.c				*
+  *	BYSC Main Source		*
+  *	BYte Sequence Composer		*
+  ****************************************/
 
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 
