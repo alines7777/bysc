@@ -18,7 +18,7 @@
 
 /* ** GLOBAL VARIABLES **************************************************** */
 
-char com = '\0'; /* a pointer attatched to this character will carry commands */
+char com[BYSC_LINE_LIMIT + 1] = { '\0' }; /* a pointer attatched to this character will carry commands */
 
 /*	this variable has been made global to avoid having long comands
 	overwrite the return addresses of functions in which it may be used.
@@ -93,7 +93,7 @@ int file_mode(char **ifile,char **ofile,lineQ *linebuffer,char **iformat,char **
 	char *command = NULL;
 
 	printf("[%c]: ",changes);
-	command = fgets(&com,(int)BYSC_LINE_LIMIT,stdin);
+	command = fgets(com,(int)BYSC_LINE_LIMIT,stdin);
 	clean_string(command);
 
 	if(strlen(command) != strlen("")){
@@ -124,7 +124,7 @@ int pen_mode(char **filename,lineQ *linebuffer,char **newline){
 	char *command = NULL;
 
 	printf("<%c>: ",changes);
-	command = fgets(&com,(int)BYSC_LINE_LIMIT,stdin);
+	command = fgets(com,(int)BYSC_LINE_LIMIT,stdin);
 	clean_string(command);
 
 	if(strlen(command) != strlen("")){
@@ -336,10 +336,10 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 int quit(const int status){
 	char *input = NULL;
 
-	wipe_string(&com);
+	wipe_string(com);
 	if(changes == BYSC_CHANGES){
 		printf("UNSAVED CHANGES::OVERWRITE STREAM?\n~~ ");
-		input = fgets(&com,(int)BYSC_LINE_LIMIT,stdin);
+		input = fgets(com,(int)BYSC_LINE_LIMIT,stdin);
 		if(strncmp(input,BYSC_YES,strlen(BYSC_YES)) == 0){
 			printf("::SAVE FUNCTION HERE::\n");
 			wipe_string(input);
@@ -348,7 +348,7 @@ int quit(const int status){
 		else if(strncmp(input,BYSC_NO,strlen(BYSC_NO)) == 0){
 			wipe_string(input);
 			printf("QUIT ANYWAY?\n~~ ");
-			input = fgets(&com,(int)BYSC_LINE_LIMIT,stdin);
+			input = fgets(com,(int)BYSC_LINE_LIMIT,stdin);
 
 			if(strncmp(input,BYSC_YES,strlen(BYSC_YES)) == 0){
 				wipe_string(input);
