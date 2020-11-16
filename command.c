@@ -229,10 +229,11 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 	else if(strncmp(warg->argument,BYSC_P_COMMAND_PRINT,strlen(warg->argument)) == 0){
 
 		if(warg->next == NULL){
-			while(wline->next != NULL){
+			while(wline != NULL){
 				printf("%s%s%*lu :%s\t%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
 				wline = wline->next;
 			}
+			printf("\n");
 		}
 		else{
 			warg = warg->next;
@@ -289,8 +290,10 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 								wline = wline->next;
 							}
 
-							/* uses macros from 'cans.h' */
-							printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineX,YLW,wline->text,DEF);
+							if(wline != NULL){
+								/* uses macros from 'cans.h' */
+								printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineX,YLW,wline->text,DEF);
+							}
 						}
 					}
 					else{
@@ -300,8 +303,10 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 							wline = wline->next;
 						}
 
-						/* uses macros from 'cans.h' */
-						printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineX,YLW,wline->text,DEF);
+						if(wline != NULL){
+							/* uses macros from 'cans.h' */
+							printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineX,YLW,wline->text,DEF);
+						}
 					}
 				}
 				else{
