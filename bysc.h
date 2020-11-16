@@ -43,7 +43,7 @@
 #define BYSC_PENMODE 2
 
 /* misc. */
-#define BYSC_LINE_LIMIT (unsigned short)~0
+#define BYSC_LINE_LIMIT (int)~0
 
 #define BYSC_COMMAND_QUIT "q"
 #define BYSC_COMMAND_CLOSE_QUIT "q!"
