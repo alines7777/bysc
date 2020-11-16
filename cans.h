@@ -1,11 +1,9 @@
-/****************************************
-  *	cenu <cenu00@yahoo.com>		*
-  *	cans.h				*
-  *	CANS Header			*
-  *	BYte Sequence Composer		*
-  ****************************************/
-
-
+/************************************************
+  *	alines7777 <alines7777@disroot.org>	*
+  *	cans.h					*
+  *	CANS Header				*
+  *	BYte Sequence Composer			*
+  ************************************************/
 
 /* PREPROCESSOR INSTRUCTIONS ********************************************** */
 
@@ -48,15 +46,18 @@
 
 /* ** FUNCTION PROTOTYPES ************************************************* */
 
+/*
 void sprint(const char *format,const char *color,const char *xcolor,const char *string);
-
+*/
 
 
 /* ** FUNCTION DEFINITIONS ************************************************ */
 
+/*
 void sprint(const char *format,const char *color,const char *xcolor,const char *string){
-	/* formatting */
+
 	printf("%s%s%s%s%s\n",format,color,xcolor,string,DEF);
 
 	return;
 }
+*/

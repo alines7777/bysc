@@ -1,9 +1,9 @@
-/****************************************
-  *	cenu <cenu00@yahoo.com>		*
-  *	main.c				*
-  *	BYSC Main Source		*
-  *	BYte Sequence Composer		*
-  ****************************************/
+/************************************************
+  *	alines7777 <alines7777@disroot.org>	*
+  *	main.c					*
+  *	BYSC Main Source			*
+  *	BYte Sequence Composer			*
+  ************************************************/
 
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 

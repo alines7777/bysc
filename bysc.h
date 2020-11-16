@@ -1,9 +1,9 @@
-/****************************************
-  *	cenu <cenu00@yahoo.com>		*
-  *	bysc.h				*
-  *	BYSC Header			*
-  *	BYte Sequence Composer		*
-  ****************************************/
+/************************************************
+  *	alines7777 <alines7777@disroot.org>	*
+  *	bysc.h					*
+  *	BYSC Header				*
+  *	BYte Sequence Composer			*
+  ************************************************/
 
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 
@@ -47,7 +47,7 @@
 #define BYSC_COMMAND_CLOSE_QUIT "q!"
 #define BYSC_COMMAND_STATUS "s"
 #define BYSC_COMMAND_STATUS_CLIP "s$"
-#define BYSC_COMMAND_THROUGH "-"
+#define BYSC_COMMAND_THROUGH ","
 #define BYSC_COMMAND_NUMBER "#" /* treat numbers not as actual numbers, but as strings */
 
 #define BYSC_F_COMMAND_READ "r"

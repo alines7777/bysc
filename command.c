@@ -1,9 +1,9 @@
-/****************************************
-  *	cenu <cenu00@yahoo.com>		*
-  *	command.c			*
-  *	BYSC Command Parser Source	*
-  *	BYte Sequence Composer		*
-  ****************************************/
+/************************************************
+  *	alines7777 <alines7777@disroot.org>	*
+  *	command.c				*
+  *	BYSC Command Parser Source		*
+  *	BYte Sequence Composer			*
+  ************************************************/
 
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 
@@ -12,15 +12,18 @@
 #include <string.h>
 #include <ctype.h>
 #include "bysc.h"
+#include "cans.h"
 
 
 
 /* ** GLOBAL VARIABLES **************************************************** */
 
 char com = '\0'; /* a pointer attatched to this character will carry commands */
-/* this variable has been made global to avoid having long comands
-overwrite the return addresses of functions in which it may be used.
-making it local would cause potential problems. i know what i'm doing */
+
+/*	this variable has been made global to avoid having long comands
+	overwrite the return addresses of functions in which it may be used.
+	making it local to a function would cause potential problems.
+	i know what i'm doing */
 
 char changes = BYSC_NOCHANGES;
 /* '*' - no unwritten changes to file buffer */
@@ -34,7 +37,7 @@ char changes = BYSC_NOCHANGES;
 int file_mode(char **ifile,char **ofile,lineQ *linebuffer,char **iformat,char **oformat);
 /* interface for working w/ the filesystem */
 /* return values:
- 	0 - quit program
+	0 - quit program
 	2 - switch to pen mode */
 
 char *set_format(const char *newline);
@@ -53,6 +56,8 @@ int pen_parse(char *cmd,lineQ *linbuffer);
 int quit(const int status);
 
 argQ string__args(const char *cmd,int *status);
+
+int is_number(const char *string);
 
 void wipe_string(char *string);
 
@@ -178,8 +183,16 @@ int file_parse(char *cmd,lineQ *linebuffer){
 int pen_parse(char *cmd,lineQ *linebuffer){
 	int status = 0;
 
+	long lineA = 0;
+	long lineB = 0;
+
+	long lineW = 0;
+	long lineX = 0;
+
 	argQ args = string__args((const char *)cmd,&status);
 	argQ warg = NULL;
+
+	lineQ wline = *linebuffer;
 
 	if(args == NULL && status == BYSC_TRUE){
 		return BYSC_PENMODE;
@@ -212,6 +225,101 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 
 		return BYSC_FILEMODE;
 	}
+
+	else if(strncmp(warg->argument,BYSC_P_COMMAND_PRINT,strlen(warg->argument)) == 0){
+
+		if(warg->next == NULL){
+			while(wline->next != NULL){
+				printf("%s\n",wline->text);
+				wline = wline->next;
+			}
+		}
+		else{
+			warg = warg->next;
+
+			while(warg != NULL){
+				wline = *linebuffer;
+				lineA = 0;
+				lineB = 0;
+				lineW = 0;
+				lineX = 0;
+
+				if(is_number(warg->argument) == BYSC_TRUE){
+					if(warg->next != NULL){
+						if(strncmp(warg->next->argument,BYSC_COMMAND_THROUGH,strlen(warg->next->argument)) == 0){
+							lineA = atol(warg->argument);
+
+							if(warg->next->next != NULL){
+								warg = warg->next->next;
+							}
+							else{
+								command_error(warg->next->argument);
+								clear_command(args);
+
+								return BYSC_PENMODE;
+							}
+
+							if(is_number(warg->argument) == BYSC_TRUE){
+								lineB = atol(warg->argument);
+
+								lineB > lineA ? (void)(0) : (lineA = ((lineA = lineA ^ lineB) ^ (lineB = lineA ^ lineB)));
+
+								while(lineW++ < lineA-1 && wline != NULL){
+									wline = wline->next;
+								}
+								lineW--;
+								while(lineW++ < lineB && wline != NULL){
+									/* uses macros from 'cans.h' */
+									printf("%s%s%ld :%s\t%s%s\n",BRT,CYN,lineW,YLW,wline->text,DEF);
+									wline = wline->next;
+								}
+								printf("\n");
+							}
+							else{
+								command_error(warg->argument);
+								clear_command(args);
+
+								return BYSC_PENMODE;
+							}
+						}
+						else{
+							lineX = atol(warg->argument);
+
+							while(lineW++ < lineX-1 && wline != NULL){
+								wline = wline->next;
+							}
+
+							/* uses macros from 'cans.h' */
+							printf("%s%s%ld :%s\t%s%s\n\n",BRT,CYN,lineX,YLW,wline->text,DEF);
+						}
+					}
+					else{
+						lineX = atol(warg->argument);
+
+						while(lineW++ < lineX-1 && wline != NULL){
+							wline = wline->next;
+						}
+
+						/* uses macros from 'cans.h' */
+						printf("%s%s%ld :%s\t%s%s\n\n",BRT,CYN,lineX,YLW,wline->text,DEF);
+					}
+				}
+				else{
+					command_error(warg->argument);
+					clear_command(args);
+
+					return BYSC_PENMODE;
+				}
+
+				warg = warg->next;
+			}
+		}
+
+		clear_command(args);
+
+		return BYSC_PENMODE;
+	}
+
 	else{
 		command_error(warg->argument);
 		clear_command(args);
@@ -353,6 +461,21 @@ argQ string__args(const char *cmd,int *status){
 
 	*status = BYSC_TRUE;
 	return args;
+}
+
+int is_number(const char *string){
+	size_t n = 0;
+
+	while(*(string + n) != '\0'){
+		if(isdigit(*( string + n ))){
+			n++;
+		}
+		else{
+			return BYSC_FALSE;
+		}
+	}
+
+	return BYSC_TRUE;
 }
 
 void wipe_string(char *string){

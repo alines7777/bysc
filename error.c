@@ -1,9 +1,9 @@
-/****************************************
-  *	cenu <cenu00@yahoo.com>		*
-  *	error.c				*
-  *	BYSC Error Source		*
-  *	BYte Sequence Composer		*
-  ****************************************/
+/************************************************
+  *	alines7777 <alines7777@disroot.org>	*
+  *	error.c					*
+  *	BYSC Error Source			*
+  *	BYte Sequence Composer			*
+  ************************************************/
 
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 
