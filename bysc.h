@@ -20,6 +20,8 @@
 #define BYSC_MEMORY_ERROR -6	/* NOT SAFE TO IGNORE */
 #define BYSC_ANOMALY -7		/* NOT SAFE TO IGNORE */
 
+#define BYSC_PADDING 4		/* pading for line numbers displayed */
+
 #define BYSC_NOCHANGES '*'
 #define BYSC_CHANGES '!'
 
@@ -65,7 +67,7 @@
 #define BYSC_P_COMMAND_WRITE "w"			/* write */
 #define BYSC_P_COMMAND_WRITE_START "wi"	/* no args */	/* write */
 #define BYSC_P_COMMAND_WRITE_END "wa"	/* no args */	/* write */
-#define BYSC_P_COMMAND_STOP "~"		/* no args */	/* write */
+#define BYSC_P_COMMAND_STOP "*"		/* no args */	/* write */
 #define BYSC_P_COMMAND_APPEND "a"			/* write */
 #define BYSC_P_COMMAND_PREPEND "i"			/* write */
 #define BYSC_P_COMMAND_REDACT "r"			/* write */
@@ -77,6 +79,7 @@
 #define BYSC_P_COMMAND_DELETE "d"			/* write */
 #define BYSC_P_COMMAND_WIPE "!"		/* no args */	/* write */
 
+/* i forgot what these are supposed to do :/ */
 #define BYSC_P_COMMAND_SEARCH_CLIP "/$"
 #define BYSC_P_COMMAND_REPLACE_CLIP "/*$"
 #define BYSC_P_COMMAND_ERASE_CLIP "/!$"

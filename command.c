@@ -183,11 +183,11 @@ int file_parse(char *cmd,lineQ *linebuffer){
 int pen_parse(char *cmd,lineQ *linebuffer){
 	int status = 0;
 
-	long lineA = 0;
-	long lineB = 0;
+	unsigned long lineA = 0;
+	unsigned long lineB = 0;
 
-	long lineW = 0;
-	long lineX = 0;
+	unsigned long lineW = 0;
+	unsigned long lineX = 0;
 
 	argQ args = string__args((const char *)cmd,&status);
 	argQ warg = NULL;
@@ -230,7 +230,7 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 
 		if(warg->next == NULL){
 			while(wline->next != NULL){
-				printf("%s\n",wline->text);
+				printf("%s%s%*lu :%s\t%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
 				wline = wline->next;
 			}
 		}
@@ -270,7 +270,7 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 								lineW--;
 								while(lineW++ < lineB && wline != NULL){
 									/* uses macros from 'cans.h' */
-									printf("%s%s%ld :%s\t%s%s\n",BRT,CYN,lineW,YLW,wline->text,DEF);
+									printf("%s%s%*lu :%s\t%s%s\n",BRT,CYN,BYSC_PADDING,lineW,YLW,wline->text,DEF);
 									wline = wline->next;
 								}
 								printf("\n");
@@ -290,7 +290,7 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 							}
 
 							/* uses macros from 'cans.h' */
-							printf("%s%s%ld :%s\t%s%s\n\n",BRT,CYN,lineX,YLW,wline->text,DEF);
+							printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineX,YLW,wline->text,DEF);
 						}
 					}
 					else{
@@ -301,7 +301,7 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 						}
 
 						/* uses macros from 'cans.h' */
-						printf("%s%s%ld :%s\t%s%s\n\n",BRT,CYN,lineX,YLW,wline->text,DEF);
+						printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineX,YLW,wline->text,DEF);
 					}
 				}
 				else{
