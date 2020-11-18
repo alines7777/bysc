@@ -18,7 +18,7 @@
 
 /* ** GLOBAL VARIABLES **************************************************** */
 
-char com[BYSC_LINE_LIMIT + 1] = { '\0' }; /* a pointer attatched to this character will carry commands */
+char com[BYSC_LINE_LIMIT] = { '\0' }; /* a pointer attatched to this character will carry commands */
 
 /*	this variable has been made global to avoid having long comands
 	overwrite the return addresses of functions in which it may be used.
@@ -324,6 +324,11 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 
 		return BYSC_PENMODE;
 	}
+	/*
+	else if(strncmp(warg->argument,BYSC_P_COMMAND_SEARCH,strlen(warg->argument)) == 0){
+
+	}
+	*/
 
 	else{
 		command_error(warg->argument);

@@ -25,7 +25,7 @@
 #define BYSC_NOCHANGES '*'
 #define BYSC_CHANGES '!'
 
-#define BYSC_YES "Y"
+#define BYSC_YES "y"
 #define BYSC_NO "n"
 
 /* file modes */
@@ -43,7 +43,7 @@
 #define BYSC_PENMODE 2
 
 /* misc. */
-#define BYSC_LINE_LIMIT (int)((unsigned char)~0)
+#define BYSC_LINE_LIMIT (int)(((unsigned int)(~0) / 2))
 
 #define BYSC_COMMAND_QUIT "q"
 #define BYSC_COMMAND_CLOSE_QUIT "q!"
