@@ -93,7 +93,7 @@ int file_mode(char **ifile,char **ofile,lineQ *linebuffer,char **iformat,char **
 	char *command = NULL;
 
 	printf("[%c]: ",changes);
-	command = fgets(com,(int)BYSC_LINE_LIMIT,stdin);
+	command = fgets(com,(int)BYSC_LINE_LIMIT-1,stdin);
 	clean_string(command);
 
 	if(strlen(command) != strlen("")){
@@ -124,7 +124,7 @@ int pen_mode(char **filename,lineQ *linebuffer,char **newline){
 	char *command = NULL;
 
 	printf("<%c>: ",changes);
-	command = fgets(com,(int)BYSC_LINE_LIMIT,stdin);
+	command = fgets(com,(int)BYSC_LINE_LIMIT-1,stdin);
 	clean_string(command);
 
 	if(strlen(command) != strlen("")){
