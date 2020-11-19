@@ -189,8 +189,11 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 	unsigned long lineW = 0;
 	unsigned long lineX = 0;
 
+	char search[BYSC_SEARCH_LIMIT] = { '\0'};
+
 	argQ args = string__args((const char *)cmd,&status);
 	argQ warg = NULL;
+	argQ sarg = NULL;
 
 	lineQ wline = *linebuffer;
 
@@ -283,6 +286,22 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 								return BYSC_PENMODE;
 							}
 						}
+						else if(strncmp(warg->next->argument,BYSC_COMMAND_FORWARD,strlen(warg->next->argument)) == 0){
+							lineX = atol(warg->argument);
+
+							while(lineW++ < lineX-1 && wline != NULL){
+								wline = wline->next;
+							}
+							while(wline != NULL){
+								/* uses macros from cans.h */
+								printf("%s%s%*lu :%s\t%s%s\n",BRT,CYN,BYSC_PADDING,lineW,YLW,wline->text,DEF);
+								wline = wline->next;
+								lineW++;
+							}
+
+							warg = warg->next;
+							printf("\n");
+						}
 						else{
 							lineX = atol(warg->argument);
 
@@ -309,7 +328,7 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 						}
 					}
 				}
-				else{
+				else{ /* change this to ROUGUE-USE message */
 					command_error(warg->argument);
 					clear_command(args);
 
@@ -326,7 +345,41 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 	}
 	/*
 	else if(strncmp(warg->argument,BYSC_P_COMMAND_SEARCH,strlen(warg->argument)) == 0){
+		warg = warg->next;
+		while(warg != NULL){
+			wline = *linebuffer;
+			lineA = 0;
+			lineB = 0;
+			lineW = 0;
+			lineX = 0;
 
+			if(is_number(warg->argument) == BYSC_TRUE){
+				if(strncmp(search,"",strlen(search)) != 0){
+					wipe_string(search);
+					warg = warg->next;
+				}
+				else{
+					printf("%s%sROGUE :: %s%s :: %s :: line number has no corresponding search element.%s\n",BRT,MAG,YLW,args->argument,warg->argument,DEF);
+					warg->next;
+				}
+			}
+			if(strncmp(warg->argument,BYSC_COMMAND_NUMBER,strlen(BYSC_COMMAND_NUMBER)) == 0){}
+			else if(strncmp(warg->argument,BYSC_COMMAND_THROUGH,strlen(BYSC_COMMAND_THROUGH)) == 0){}
+			else{
+				if(strncmp(search,"",strlen(search)) != 0){
+
+				}
+				else{
+					strncpy(warg->argument);
+					sarg = warg;
+				}
+			}
+
+		}
+
+		clear_command(args);
+
+		return BYSC_PENMODE;
 	}
 	*/
 
