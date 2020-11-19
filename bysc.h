@@ -5,6 +5,8 @@
   *	BYte Sequence Composer			*
   ************************************************/
 
+
+
 /* ** PREPROCESSOR INSTRUCTIONS ******************************************* */
 
 #include <stdio.h>
@@ -58,7 +60,8 @@
 
 #define BYSC_F_COMMAND_READ "r"
 #define BYSC_F_COMMAND_WRITE "w"
-#define BYSC_F_COMMAND_STREAM "o"
+#define BYSC_F_COMMAND_ISTREAM "i"
+#define BYSC_F_COMMAND_OSTREAM "o"
 #define BYSC_F_COMMAND_FORMAT "f"
 #define BYSC_F_COMMAND_CLOSE "!"
 #define BYSC_F_COMMAND_WRITE_CLOSE "w!"
@@ -68,6 +71,7 @@
 #define BYSC_P_COMMAND_SEARCH "/"			/* read */
 #define BYSC_P_COMMAND_REPLACE "/*"			/* read & write */
 #define BYSC_P_COMMAND_ERASE "/!"			/* read & write */
+#define BYSC_P_COMMAND_DESTROY "\"			/* read & write */
 #define BYSC_P_COMMAND_WRITE "w"			/* write */
 #define BYSC_P_COMMAND_WRITE_START "wi"	/* no args */	/* write */
 #define BYSC_P_COMMAND_WRITE_END "wa"	/* no args */	/* write */
@@ -80,13 +84,20 @@
 #define BYSC_P_COMMAND_CUT "x"				/* read & write */
 #define BYSC_P_COMMAND_PASTE "v"			/* write */
 #define BYSC_P_COMMAND_UNDO "z"		/* no args */	/* write */
+#define BYSC_P_COMMAND_FORGET "?"	/* no args */	/* none */
 #define BYSC_P_COMMAND_DELETE "d"			/* write */
 #define BYSC_P_COMMAND_WIPE "!"		/* no args */	/* write */
 
-/* i forgot what these are supposed to do :/ */
+/************************************************************************
+ *	i think the commands below are for modifying the program's	*
+ *	clipboard. i don't think they could have any other purpose,	*
+ *	because the copy, cut, paste, and undo commands weren't		*
+ *	specified for this.						*
+ *************************************************************************/
 #define BYSC_P_COMMAND_SEARCH_CLIP "/$"
 #define BYSC_P_COMMAND_REPLACE_CLIP "/*$"
 #define BYSC_P_COMMAND_ERASE_CLIP "/!$"
+#define BYSC_P_COMMAND_DESTROY_CLIP "\$"
 #define BYSC_P_COMMAND_WRITE_CLIP "w$"
 #define BYSC_P_COMMAND_WS_CLIP "wi$"	/* no args */
 #define BYSC_P_COMMAND_WE_CLIP "wa$"	/* no args */

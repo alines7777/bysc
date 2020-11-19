@@ -5,6 +5,8 @@
   *	BYte Sequence Composer			*
   ************************************************/
 
+
+
 /* PREPROCESSOR INSTRUCTIONS ********************************************** */
 
 #include <stdio.h>
@@ -46,18 +48,10 @@
 
 /* ** FUNCTION PROTOTYPES ************************************************* */
 
-/*
-void sprint(const char *format,const char *color,const char *xcolor,const char *string);
-*/
+/* NONE */
+
 
 
 /* ** FUNCTION DEFINITIONS ************************************************ */
 
-/*
-void sprint(const char *format,const char *color,const char *xcolor,const char *string){
-
-	printf("%s%s%s%s%s\n",format,color,xcolor,string,DEF);
-
-	return;
-}
-*/
+/* NONE */
