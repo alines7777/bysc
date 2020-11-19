@@ -46,6 +46,8 @@
 #define BYSC_LINE_LIMIT (int)(((unsigned int)(~0) / 2))
 #define BYSC_SEARCH_LIMIT (unsigned short)(~0)
 
+#define BYSC_NOP (void)0
+
 #define BYSC_COMMAND_QUIT "q"
 #define BYSC_COMMAND_CLOSE_QUIT "q!"
 #define BYSC_COMMAND_STATUS "s"

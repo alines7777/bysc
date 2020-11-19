@@ -255,35 +255,46 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 
 							if(warg->next->next != NULL){
 								warg = warg->next->next;
+
+								if(is_number(warg->argument) == BYSC_TRUE){
+									lineB = atol(warg->argument);
+
+									lineB > lineA ? (void)(0) : (lineA = ((lineA = lineA ^ lineB) ^ (lineB = lineA ^ lineB)));
+
+									while(lineW++ < lineA-1 && wline != NULL){
+										wline = wline->next;
+									}
+									lineW--;
+									while(lineW++ < lineB && wline != NULL){
+										/* uses macros from 'cans.h' */
+										printf("%s%s%*lu :%s\t%s%s\n",BRT,CYN,BYSC_PADDING,lineW,YLW,wline->text,DEF);
+										wline = wline->next;
+									}
+									printf("\n");
+								}
+								else{
+									/* uses macros from cans.h */
+									printf("%s%sROGUE :: %s%s :: %s :: not a number :: %lu %s :: incomplete range, throwing away %s\n\n",BRT,MAG,YLW,args->argument,warg->argument,lineA,BYSC_COMMAND_THROUGH,DEF);
+
+									while(lineW++ < lineA-1 && wline != NULL){
+										wline = wline->next;
+									}
+
+									/* uses macros from 'cans.h' */
+									printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineW,YLW,wline->text,DEF);
+								}
 							}
 							else{
-								command_error(warg->next->argument);
-								clear_command(args);
-
-								return BYSC_PENMODE;
-							}
-
-							if(is_number(warg->argument) == BYSC_TRUE){
-								lineB = atol(warg->argument);
-
-								lineB > lineA ? (void)(0) : (lineA = ((lineA = lineA ^ lineB) ^ (lineB = lineA ^ lineB)));
+								/* uses macros from cans.h */
+								printf("%s%sROGUE :: %s%s :: %lu %s :: incomplete range, throwing away %s\n\n",BRT,MAG,YLW,args->argument,lineA,BYSC_COMMAND_THROUGH,DEF);
 
 								while(lineW++ < lineA-1 && wline != NULL){
 									wline = wline->next;
 								}
-								lineW--;
-								while(lineW++ < lineB && wline != NULL){
-									/* uses macros from 'cans.h' */
-									printf("%s%s%*lu :%s\t%s%s\n",BRT,CYN,BYSC_PADDING,lineW,YLW,wline->text,DEF);
-									wline = wline->next;
-								}
-								printf("\n");
-							}
-							else{
-								command_error(warg->argument);
-								clear_command(args);
 
-								return BYSC_PENMODE;
+								/* uses macros from 'cans.h' */
+								printf("%s%s%*lu :%s\t%s%s\n\n",BRT,CYN,BYSC_PADDING,lineW,YLW,wline->text,DEF);
+								warg = warg->next;
 							}
 						}
 						else if(strncmp(warg->next->argument,BYSC_COMMAND_FORWARD,strlen(warg->next->argument)) == 0){
@@ -329,13 +340,13 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 					}
 				}
 				else{ /* change this to ROUGUE-USE message */
-					command_error(warg->argument);
-					clear_command(args);
-
-					return BYSC_PENMODE;
+					/* uses macros from cans.h */
+					printf("%s%sROGUE :: %s%s :: %s :: not a number%s\n\n",BRT,MAG,YLW,args->argument,warg->argument,DEF);
 				}
 
-				warg = warg->next;
+				if(warg != NULL){
+					warg = warg->next;
+				}
 			}
 		}
 
