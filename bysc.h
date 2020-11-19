@@ -71,7 +71,7 @@
 #define BYSC_P_COMMAND_SEARCH "/"			/* read */
 #define BYSC_P_COMMAND_REPLACE "/*"			/* read & write */
 #define BYSC_P_COMMAND_ERASE "/!"			/* read & write */
-#define BYSC_P_COMMAND_DESTROY "\"			/* read & write */
+#define BYSC_P_COMMAND_DESTROY "\\"			/* read & write */
 #define BYSC_P_COMMAND_WRITE "w"			/* write */
 #define BYSC_P_COMMAND_WRITE_START "wi"	/* no args */	/* write */
 #define BYSC_P_COMMAND_WRITE_END "wa"	/* no args */	/* write */
@@ -97,7 +97,7 @@
 #define BYSC_P_COMMAND_SEARCH_CLIP "/$"
 #define BYSC_P_COMMAND_REPLACE_CLIP "/*$"
 #define BYSC_P_COMMAND_ERASE_CLIP "/!$"
-#define BYSC_P_COMMAND_DESTROY_CLIP "\$"
+#define BYSC_P_COMMAND_DESTROY_CLIP "\\$"
 #define BYSC_P_COMMAND_WRITE_CLIP "w$"
 #define BYSC_P_COMMAND_WS_CLIP "wi$"	/* no args */
 #define BYSC_P_COMMAND_WE_CLIP "wa$"	/* no args */
