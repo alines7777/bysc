@@ -46,7 +46,7 @@
 
 /* misc. */
 #define BYSC_LINE_LIMIT (int)(((unsigned int)(~0) / 2))
-#define BYSC_SEARCH_LIMIT (unsigned short)(~0)
+#define BYSC_SEARCH_LIMIT (int)((unsigned short)(~0))
 
 #define BYSC_NOP (void)0
 
@@ -57,6 +57,7 @@
 #define BYSC_COMMAND_THROUGH ","
 #define BYSC_COMMAND_FORWARD "."
 #define BYSC_COMMAND_NUMBER "#" /* treat numbers not as actual numbers, but as strings */
+#define BYSC_COMMAND_QUOTE "\"" /* unify arguments within quotes into one string */
 
 #define BYSC_F_COMMAND_READ "r"
 #define BYSC_F_COMMAND_WRITE "w"

@@ -59,6 +59,8 @@ argQ string__args(const char *cmd,int *status);
 
 int is_number(const char *string);
 
+int search_line(const char *line, const char *term);
+
 void wipe_string(char *string);
 
 void clean_string(char *string);
@@ -189,7 +191,9 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 	unsigned long lineW = 0;
 	unsigned long lineX = 0;
 
-	char search[BYSC_SEARCH_LIMIT] = { '\0'};
+	unsigned long byteW = 0;
+
+	char search[BYSC_SEARCH_LIMIT] = { '\0' };
 
 	argQ args = string__args((const char *)cmd,&status);
 	argQ warg = NULL;
@@ -354,7 +358,6 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 
 		return BYSC_PENMODE;
 	}
-	/*
 	else if(strncmp(warg->argument,BYSC_P_COMMAND_SEARCH,strlen(warg->argument)) == 0){
 		warg = warg->next;
 		while(warg != NULL){
@@ -365,7 +368,14 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 			lineX = 0;
 
 			if(is_number(warg->argument) == BYSC_TRUE){
-				if(strncmp(search,"",strlen(search)) != 0){
+				/* commented for safety
+				if(sarg != NULL){
+					while(wline != NULL){
+						byteX = 0;
+						while(byteX++ <= strlen(wline->text)){
+							if(strncmp(wline->&text[byteX],sarg->argument,strlen(sarg->argument)) == 0){}
+						}
+					}
 					wipe_string(search);
 					warg = warg->next;
 				}
@@ -373,26 +383,115 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 					printf("%s%sROGUE :: %s%s :: %s :: line number has no corresponding search element.%s\n",BRT,MAG,YLW,args->argument,warg->argument,DEF);
 					warg->next;
 				}
+				*/
+				BYSC_NOP;
 			}
-			if(strncmp(warg->argument,BYSC_COMMAND_NUMBER,strlen(BYSC_COMMAND_NUMBER)) == 0){}
-			else if(strncmp(warg->argument,BYSC_COMMAND_THROUGH,strlen(BYSC_COMMAND_THROUGH)) == 0){}
+			else if(strncmp(warg->argument,BYSC_COMMAND_THROUGH,strlen(BYSC_COMMAND_THROUGH)) == 0){BYSC_NOP;}
+			else if(strncmp(warg->argument,BYSC_COMMAND_FORWARD,strlen(BYSC_COMMAND_FORWARD)) == 0){BYSC_NOP;}
+			else if(strncmp(warg->argument,BYSC_COMMAND_NUMBER,strlen(BYSC_COMMAND_NUMBER)) == 0){BYSC_NOP;}
+			else if(strncmp(warg->argument,BYSC_COMMAND_QUOTE,strlen(BYSC_COMMAND_QUOTE)) == 0){BYSC_NOP;}
 			else{
-				if(strncmp(search,"",strlen(search)) != 0){
+				if(strncmp(search,"",strlen(search)) == 0 && warg->next != NULL){
+					strncpy(search,warg->argument,strlen(warg->argument));
+				}
+				else if(strncmp(search,"",strlen(search)) == 0 && warg->next == NULL){
+					strncpy(search,warg->argument,strlen(warg->argument));
+					/* uses macros from cans.h */
+					printf("%s%s%s :%s\n",BRT,MAG,search,DEF);
+					while(wline != NULL){
+						if(search_line(wline->text,search) == BYSC_TRUE){
+							/* uses macros from cans.h */
+							printf("%s%s%*lu :\t%s%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
+						}
+						else{
+							lineW++;
+						}
+						wline = wline->next;
+					}
+					printf("\n");
+				}
+				else if(strncmp(search,"",strlen(search)) != 0 && warg->next != NULL){
+					/* uses macros from cans.h */
+					printf("%s%s%s :%s\n",BRT,MAG,search,DEF);
 
+					while(wline != NULL){
+						if(search_line(wline->text,search) == BYSC_TRUE){
+							/* uses macros from cans.h */
+							printf("%s%s%*lu :\t%s%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
+						}
+						else{
+							lineW++;
+						}
+						wline = wline->next;
+					}
+					printf("\n");
+
+					strncpy(search,"\0",strlen(search));
+					strncpy(search,warg->argument,strlen(warg->argument));
+				}
+				else if(strncmp(search,"",strlen(search)) != 0 && warg->next == NULL){
+					/* uses macros from cans.h */
+					printf("%s%s%s :%s\n",BRT,MAG,search,DEF);
+
+					while(wline != NULL){
+						if(search_line(wline->text,search) == BYSC_TRUE){
+							/* uses macros from cans.h */
+							printf("%s%s%*lu :\t%s%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
+						}
+						else{
+							lineW++;
+						}
+						wline = wline->next;
+					}
+					printf("\n");
+					strncpy(search,"\0",strlen(search));
+					strncpy(search,warg->argument,strlen(warg->argument));
+
+					wline = *linebuffer;
+					lineW = 0;
+
+					/* uses macros from cans.h */
+					printf("%s%s%s :%s\n",BRT,MAG,search,DEF);
+
+					while(wline != NULL){
+						if(search_line(wline->text,search) == BYSC_TRUE){
+							/* uses macros from cans.h */
+							printf("%s%s%*lu :\t%s%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
+						}
+						else{
+							lineW++;
+						}
+						wline = wline->next;
+					}
+					printf("\n");
 				}
 				else{
-					strncpy(warg->argument);
-					sarg = warg;
+					while(wline != NULL){
+						if(search_line(wline->text,search) == BYSC_TRUE){
+							/* uses macros from cans.h */
+							printf("%s%s%*lu :\t%s%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
+						}
+						else{
+							lineW++;
+						}
+						wline = wline->next;
+					}
+
+					/* uses macros from cans.h */
+					printf("\n");
+					strncpy(search,"\0",strlen(search));
+					strncpy(search,warg->argument,strlen(warg->argument));
 				}
 			}
-
+			if(warg != NULL){
+				warg = warg->next;
+			}
 		}
 
 		clear_command(args);
 
 		return BYSC_PENMODE;
 	}
-	*/
 
 	else{
 		command_error(warg->argument);
@@ -550,6 +649,24 @@ int is_number(const char *string){
 	}
 
 	return BYSC_TRUE;
+}
+
+int search_line(const char *line, const char *term){
+	size_t byteX = 0;
+	int status = BYSC_FALSE;
+
+	while(byteX <= strlen(line) && status == BYSC_FALSE){
+		if(strncmp(&line[byteX],term,strlen(term)) == 0){
+			status = BYSC_TRUE;
+		}
+		else{
+			BYSC_NOP;
+		}
+
+		byteX++;
+	}
+
+	return status;
 }
 
 void wipe_string(char *string){
