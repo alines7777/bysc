@@ -3,7 +3,7 @@
 ## Dual-mode line editor written in C.
 The project's aim is power, precision, and versatility.
 
-###This project is proudly licensed under the GNU Affero General Public License
+### This project is proudly licensed under the GNU Affero General Public License
 ![AGPL Logo](gnu_agpl.png)
 
 ## Commands
