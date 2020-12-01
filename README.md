@@ -5,6 +5,7 @@ The project's aim is power, precision, and versatility.
 
 ### This project is proudly licensed under the GNU Affero General Public License
 ![AGPL Logo](gnu_agpl.png)
+
 Why?
 Because I have no reason to assume that nobody has the capacity or the will to modify or compile this program onto a network-attached system as a way of circumventing their obligations to disclose the source code to this program or their modifications of it, or to disclose that it's even being used.
 I'm looking at you, Google. You don't get to have the brownie points of calling your programs "free software" if you are not willing to fulfill any of the obligations that would involve defending the very same rights of other users that you are currently enjoying as a developer.
