@@ -1,5 +1,6 @@
 must have the following dependencies:
-- a C compiler compatible with the C89 standard (any compiler whatsoever ought to work)
+- a C compiler compatible with the C89 standard
+(any C compiler whatsoever ought to work for this, but i recommend GCC or Clang)
 - a POSIX-compliant implementation of 'make'
 
 if you are on a unix-like system just run 'make', then 'make install'.
