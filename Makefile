@@ -8,6 +8,7 @@ CC_OPT_MORE_FLAGS = -O3
 CC_FAST_FLAGS = -Ofast
 CC_OPT_SMALL_FLAGS = -Os
 CC_SMALL_FLAGS = -Oz
+ROOT = /usr/local
 
 MAINC = main.c
 MAINO = main.o
@@ -24,22 +25,22 @@ ERRORO = error.o
 all: $(PROJECT)
 
 $(PROJECT): $(MAINO) $(FILEO) $(COMMANDO) $(ERRORO)
-	$(CC) $(CC_LINK_FLAGS) $(MAINO) $(FILEO) $(COMMANDO) $(ERRORO) -o $(PROJECT)
+	$(CC) $(CC_OPT_MORE_FLAGS) $(CC_LINK_FLAGS) $(MAINO) $(FILEO) $(COMMANDO) $(ERRORO) -o $(PROJECT)
 
 $(MAINO): $(MAINC)
-	$(CC) $(CC_OBJECT_FLAGS) $(MAINC) -o $(MAINO)
+	$(CC) $(CC_OPT_MORE_FLAGS) $(CC_OBJECT_FLAGS) $(MAINC) -o $(MAINO)
 
 $(FILEO): $(FILEC)
-	$(CC) $(CC_OBJECT_FLAGS) $(FILEC) -o $(FILEO)
+	$(CC) $(CC_OPT_MORE_FLAGS) $(CC_OBJECT_FLAGS) $(FILEC) -o $(FILEO)
 
 $(COMMANDO): $(COMMANDC)
-	$(CC) $(CC_OBJECT_FLAGS) $(COMMANDC) -o $(COMMANDO)
+	$(CC) $(CC_OPT_MORE_FLAGS) $(CC_OBJECT_FLAGS) $(COMMANDC) -o $(COMMANDO)
 
 $(ERRORO): $(ERRORC)
-	$(CC) $(CC_OBJECT_FLAGS) $(ERRORC) -o $(ERRORO)
+	$(CC) $(CC_OPT_MORE_FLAGS) $(CC_OBJECT_FLAGS) $(ERRORC) -o $(ERRORO)
 
 install: $(PROJECT)
-	cp ./$(PROJECT) /usr/bin
+	cp ./$(PROJECT) $(ROOT)/bin
 
 clean:
 	rm -f *.o
@@ -47,5 +48,5 @@ clean:
 purge:
 	rm -f *.o $(PROJECT)
 
-full_retard:
+full_poobrain:
 	rm -f *.o $(PROJECT) *.c

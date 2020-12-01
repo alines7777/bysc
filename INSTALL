@@ -1,0 +1,18 @@
+must have the following dependencies:
+- a C compiler compatible with the C89 standard (any compiler whatsoever ought to work)
+- a POSIX-compliant implementation of 'make'
+
+if you are on a unix-like system just run 'make', then 'make install'.
+
+if you are not on a unix-like system, run 'make', then copy the executable file
+into your desired directory
+
+if 'make' is unavailable, you may run the following commands :
+        cc -O3 -ansi -pedantic -Wall -c main.c -o main.o
+        cc -O3 -ansi -pedantic -Wall -c error.c -o error.o
+        cc -O3 -ansi -pedantic -Wall -c file.c -o file.o
+        cc -O3 -ansi -pedantic -Wall -c command.c -o command.o
+        cc -O3 -ansi -Wall main.o error.o file.o command.o -o bysc
+
+i guess the process is really straight forward, but we should all be thankful,
+because that's a good thing
