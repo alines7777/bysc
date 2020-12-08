@@ -368,13 +368,18 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 			lineX = 0;
 
 			if(is_number(warg->argument) == BYSC_TRUE){
-				/* commented for safety
-				if(sarg != NULL){
+				/*
+				commented for safety
+				if(strncmp(search,"",strlen(search)) != 0){
 					while(wline != NULL){
-						byteX = 0;
-						while(byteX++ <= strlen(wline->text)){
-							if(strncmp(wline->&text[byteX],sarg->argument,strlen(sarg->argument)) == 0){}
+						if(search_line(wline->text,search) == BYSC_TRUE){
+							/* uses macros from cans.h */ /*
+							printf("%s%s%*lu :\t%s%s%s\n",BRT,CYN,BYSC_PADDING,++lineW,YLW,wline->text,DEF);
 						}
+						else{
+							lineW++;
+						}
+						wline = wline->next;
 					}
 					wipe_string(search);
 					warg = warg->next;
@@ -384,10 +389,11 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 					warg->next;
 				}
 				*/
+
 				BYSC_NOP;
 			}
-			else if(strncmp(warg->argument,BYSC_COMMAND_THROUGH,strlen(BYSC_COMMAND_THROUGH)) == 0){BYSC_NOP;}
-			else if(strncmp(warg->argument,BYSC_COMMAND_FORWARD,strlen(BYSC_COMMAND_FORWARD)) == 0){BYSC_NOP;}
+			else if(strncmp(warg->argument,BYSC_COMMAND_THROUGH,strlen(BYSC_COMMAND_THROUGH)) == 0){BYSC_NOP;} /* goes in is_number check */
+			else if(strncmp(warg->argument,BYSC_COMMAND_FORWARD,strlen(BYSC_COMMAND_FORWARD)) == 0){BYSC_NOP;} /* goes in is_number check */
 			else if(strncmp(warg->argument,BYSC_COMMAND_NUMBER,strlen(BYSC_COMMAND_NUMBER)) == 0){BYSC_NOP;}
 			else if(strncmp(warg->argument,BYSC_COMMAND_QUOTE,strlen(BYSC_COMMAND_QUOTE)) == 0){BYSC_NOP;}
 			else{
