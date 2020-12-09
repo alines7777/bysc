@@ -70,8 +70,8 @@
 #define BYSC_F_COMMAND_PEN "p"
 
 #define BYSC_P_COMMAND_SEARCH "/"			/* read */
-#define BYSC_P_COMMAND_REPLACE "/&"			/* read & write */
-#define BYSC_P_COMMAND_ERASE "/#"			/* read & write */
+#define BYSC_P_COMMAND_REPLACE "/*"			/* read & write */
+#define BYSC_P_COMMAND_ERASE "/!"			/* read & write */
 #define BYSC_P_COMMAND_DESTROY "\\"			/* read & write */
 #define BYSC_P_COMMAND_WRITE "w"			/* write */
 #define BYSC_P_COMMAND_WRITE_START "wi"	/* no args */	/* write */
