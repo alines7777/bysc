@@ -2,7 +2,7 @@
 # BYSC
 ## Dual-mode line editor written in C.
 The project's aim is power, precision, and versatility.
-I am fairly confident that once this project is complete, I will do with it what we call "dog-fooding", meaning that i will be using it for my own purposes, namely fixing compiler warnings and clipping and rearranging code, to make it part of my process for refining the code i write
+I am fairly confident that once this project is complete, I will do with it what we call "dog-fooding", meaning that i will be using it for my own purposes, namely fixing compiler warnings and clipping and rearranging code, to make it part of my process for refining the code I write.
 
 ### This project is proudly licensed under the GNU Affero General Public License
 ![AGPL Logo](gnu_agpl.png)
