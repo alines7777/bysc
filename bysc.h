@@ -70,8 +70,8 @@
 #define BYSC_F_COMMAND_PEN "p"
 
 #define BYSC_P_COMMAND_SEARCH "/"			/* read */
-#define BYSC_P_COMMAND_REPLACE "/*"			/* read & write */
-#define BYSC_P_COMMAND_ERASE "/!"			/* read & write */
+#define BYSC_P_COMMAND_REPLACE "/&"			/* read & write */
+#define BYSC_P_COMMAND_ERASE "/#"			/* read & write */
 #define BYSC_P_COMMAND_DESTROY "\\"			/* read & write */
 #define BYSC_P_COMMAND_WRITE "w"			/* write */
 #define BYSC_P_COMMAND_WRITE_START "wi"	/* no args */	/* write */
@@ -80,6 +80,22 @@
 #define BYSC_P_COMMAND_APPEND "a"			/* write */
 #define BYSC_P_COMMAND_PREPEND "i"			/* write */
 #define BYSC_P_COMMAND_REDACT "r"			/* write */
+
+#define BYSC_P_COMMAND_C_TERMINATE "c;"			/* write */
+#define BYSC_P_COMMAND_C_COMMENT_BLOCK "c/*"		/* write */
+#define BYSC_P_COMMAND_C_COMMENT_LINE "c//"		/* write */
+#define BYSC_P_COMMAND_C_CODE_BLOCK_A "c{"		/* wrtie */
+#define BYSC_P_COMMAND_C_CODE_BLOCK_B "c}"		/* write */
+#define BYSC_P_COMMAND_SHELL_COMMENT "$#"		/* write */
+#define BYSC_P_COMMAND_ASM_COMMENT "s;"			/* write */
+/************************************************************************
+  *	i know c/c++ programmers would really appreciate these		*
+  *	commands.							*
+  *	these commands will instantly catch the most common but most	*
+  *	easily corrected errors. hopefully more quickly and with	*
+  *	greater ease than other editors might				*
+  ************************************************************************/
+
 #define BYSC_P_COMMAND_PRINT "p"			/* read */
 #define BYSC_P_COMMAND_COPY "c"				/* read */
 #define BYSC_P_COMMAND_CUT "x"				/* read & write */
