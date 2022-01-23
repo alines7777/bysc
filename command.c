@@ -368,8 +368,8 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 			lineX = 0;
 
 			if(is_number(warg->argument) == BYSC_TRUE){
-				/*
-				commented for safety
+				/* commented for safety
+				
 				if(strncmp(search,"",strlen(search)) != 0){
 					while(wline != NULL){
 						if(search_line(wline->text,search) == BYSC_TRUE){

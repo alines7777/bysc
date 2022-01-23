@@ -18,6 +18,8 @@
 
 int f_read_error(const char *filename);
 
+int m_l_alloc_error(lineQ pointer);
+
 int m_alloc_error(lineQ linebuffer);
 
 int m_dealloc_error(void);

@@ -37,7 +37,7 @@ int clear_linebuffer(lineQ lines);
 /* error.c */
 extern int f_read_error(const char *filename);
 
-extern int m_l_alloc_error();
+extern int m_l_alloc_error(lineQ pointer);
 
 extern void m_dealloc_error(void);
 
