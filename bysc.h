@@ -45,7 +45,7 @@
 #define BYSC_PENMODE 2
 
 /* misc. */
-#define BYSC_LINE_LIMIT (int)(((unsigned int)(~0) / 2))
+#define BYSC_LINE_LIMIT (int)(((unsigned int)(~0) >> 2))
 #define BYSC_SEARCH_LIMIT (int)((unsigned short)(~0))
 
 #define BYSC_NOP (void)0
