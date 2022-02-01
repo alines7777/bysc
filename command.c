@@ -301,7 +301,7 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 								warg = warg->next;
 							}
 						}
-						else if(strncmp(warg->next->argument,BYSC_COMMAND_FORWARD,strlen(warg->next->argument)) == 0){
+						else if(strncmp(warg->next->argument,BYSC_COMMAND_FOREWARD,strlen(warg->next->argument)) == 0){
 							lineX = atol(warg->argument);
 
 							while(lineW++ < lineX-1 && wline != NULL){
@@ -393,7 +393,7 @@ int pen_parse(char *cmd,lineQ *linebuffer){
 				BYSC_NOP;
 			}
 			else if(strncmp(warg->argument,BYSC_COMMAND_THROUGH,strlen(BYSC_COMMAND_THROUGH)) == 0){BYSC_NOP;} /* goes in is_number check */
-			else if(strncmp(warg->argument,BYSC_COMMAND_FORWARD,strlen(BYSC_COMMAND_FORWARD)) == 0){BYSC_NOP;} /* goes in is_number check */
+			else if(strncmp(warg->argument,BYSC_COMMAND_FOREWARD,strlen(BYSC_COMMAND_FOREWARD)) == 0){BYSC_NOP;} /* goes in is_number check */
 			else if(strncmp(warg->argument,BYSC_COMMAND_NUMBER,strlen(BYSC_COMMAND_NUMBER)) == 0){BYSC_NOP;}
 			else if(strncmp(warg->argument,BYSC_COMMAND_QUOTE,strlen(BYSC_COMMAND_QUOTE)) == 0){BYSC_NOP;}
 			else{

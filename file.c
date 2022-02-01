@@ -88,7 +88,7 @@ int file__tfbuffer(FILE *stream,const char *filename,size_t *filesize,char **tfi
 	/* allocate file size to temporary file buffer */
 
 	while(!feof(stream)){
-		fread((char *)*tfilebuffer + loop,1,sizeof(char),stream);
+		(void)fread((char *)*tfilebuffer + loop,1,sizeof(char),stream);
 		loop++;
 	}
 
