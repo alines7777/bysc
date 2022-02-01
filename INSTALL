@@ -1,3 +1,8 @@
+
+
+WARNING! :: THIS PROJECT IS STILL NOWHERE NEAR BEING READY!
+( AT THIS TIME, IT'S STILL MUCH LIKE A SOFTWARE EQUIVALENT TO A PAPERWEIGHT )
+
 must have the following dependencies:
 - a C compiler compatible with the C89 standard
 (any C compiler whatsoever ought to work for this, but i recommend GCC or Clang)
@@ -15,5 +20,5 @@ if 'make' is unavailable, you may run the following commands :
         cc -O3 -ansi -pedantic -Wall -c command.c -o command.o
         cc -O3 -ansi -Wall main.o error.o file.o command.o -o bysc
 
-i guess the process is really straight forward, but we should all be thankful,
+i guess the process is really straight foreward, but we should all be thankful,
 because that's a good thing

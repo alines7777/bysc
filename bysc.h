@@ -55,7 +55,7 @@
 #define BYSC_COMMAND_STATUS "s"
 #define BYSC_COMMAND_STATUS_CLIP "s$"
 #define BYSC_COMMAND_THROUGH ","
-#define BYSC_COMMAND_FORWARD "."
+#define BYSC_COMMAND_FOREWARD "."
 #define BYSC_COMMAND_NUMBER "#" /* treat numbers not as actual numbers, but as strings */
 #define BYSC_COMMAND_QUOTE "\"" /* unify arguments within quotes into one string */
 
@@ -88,6 +88,7 @@
 #define BYSC_P_COMMAND_C_CODE_BLOCK_B "c}"		/* write */
 #define BYSC_P_COMMAND_SHELL_COMMENT "$#"		/* write */
 #define BYSC_P_COMMAND_ASM_COMMENT "s;"			/* write */
+
 /************************************************************************
   *	i know c/c++ programmers would really appreciate these		*
   *	commands.							*
@@ -106,11 +107,12 @@
 #define BYSC_P_COMMAND_WIPE "!"		/* no args */	/* write */
 
 /************************************************************************
- *	i think the commands below are for modifying the program's	*
- *	clipboard. i don't think they could have any other purpose,	*
- *	because the copy, cut, paste, and undo commands weren't		*
- *	specified for this.						*
- *************************************************************************/
+  *	i think the commands below are for modifying the program's		*
+  *	clipboard. i don't think they could have any other purpose,		*
+  *	because the copy, cut, paste, and undo commands weren't		*
+  *	specified for this.						*
+  *************************************************************************/
+
 #define BYSC_P_COMMAND_SEARCH_CLIP "/$"
 #define BYSC_P_COMMAND_REPLACE_CLIP "/*$"
 #define BYSC_P_COMMAND_ERASE_CLIP "/!$"
