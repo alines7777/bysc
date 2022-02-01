@@ -242,7 +242,7 @@ int main(const int argc,const char **argv){
 					return arg_out_error(*(argv + argloop));
 				}
 				output_file = (char *)malloc(sizeof(char) * (strlen(*(argv + argloop) + 1)));
-				strncpy(output_file,*(argv + argloop),strlen(*(argv + argloop)));
+				strncpy(output_file,*(argv + argloop),strlen(*(argv + argloop)) + 1);
 				output_file[strlen(*(argv + argloop))] = '\0';
 				ofile_set = 1;
 				wswitch_called = 1;
