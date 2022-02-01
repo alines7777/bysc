@@ -241,15 +241,15 @@ int main(const int argc,const char **argv){
 
 					return arg_out_error(*(argv + argloop));
 				}
-				output_file = (char *)malloc(sizeof(char) * (strlen(*(argv + argloop) + 1 )));
-				strncpy(output_file,*(argv + argloop),strlen(*(argv + argloop) + 1 ));
+				output_file = (char *)malloc(sizeof(char) * (strlen(*(argv + argloop) + 1)));
+				strncpy(output_file,*(argv + argloop),strlen(*(argv + argloop)));
 				output_file[strlen(*(argv + argloop))] = '\0';
 				ofile_set = 1;
 				wswitch_called = 1;
 			}
 			else if(!ifile_set){
-				input_file = (char *)malloc(sizeof(char) * (strlen(*(argv + argloop)) + 1 ));
-				strncpy(input_file,*(argv + argloop),strlen(*(argv + argloop) + 1 ));
+				input_file = (char *)malloc(sizeof(char) * (strlen(*(argv + argloop + 1)) + 1));
+				strncpy(input_file,*(argv + argloop),strlen(*(argv + argloop)) + 1);
 				input_file[strlen(*(argv + argloop))] = '\0';
 				ifile_set = 1;
 			}
@@ -305,7 +305,7 @@ int main(const int argc,const char **argv){
 		input_format = set_format(NEW_LINE);
 		output_format = input_format;
 		input_file = (char *)malloc(sizeof(char) * (strlen(*(argv + 1)) + 1));
-		strncat(input_file,*(argv + 1),strlen(*(argv + 1) + 1 ));
+		strncat(input_file,*(argv + 1),strlen(*(argv + 1)) + 1);
 		input_file[strlen(*(argv + 1))] = '\0';
 		output_file = input_file;
 	}
